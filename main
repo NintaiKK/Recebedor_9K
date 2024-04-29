@@ -1,0 +1,221 @@
+import tkinter as tk
+import xml.etree.ElementTree as et
+from tkinter import messagebox
+from tkinter import *
+from tkinter import ttk
+
+fonte = r'C:\Users\mateus.roesch\Desktop\recebedor 9k v2.0.0\data.xml'
+
+tree = et.parse(fonte)
+root = tree.getroot()
+
+janela=tk.Tk()
+janela.resizable(0,0)
+janela.geometry('800x500')
+janela.title('Recebedor 9k 2.0')
+
+#frames
+
+frameFA = tk.Frame()
+
+#frames//
+
+#defs
+
+def get():
+    nmCl = entryNmCl.get()
+    vlr = entryVlr.get()
+    data = entryData.get()
+    rcb = entryRcb.get()
+
+def cadastrar():
+    getCl = entryCdsCl
+    getCNCP = entryCdsCNCP
+    getNr = entryCdsNr
+
+def limpar():
+    lmpCl = entryNmCl.delete(0, END)
+    lmpVlr = entryVlr.delete(0, END)
+    lmpData = entryData.delete(0, END)
+    lmpRcb = entryRcb.delete(0, END)
+
+def limpar2():
+    lmpCl = entryCdsCl.delete(0, END)
+    lmpVlr = entryCdsCNCP.delete(0, END)
+    lmpData = entryCdsNr.delete(0, END)
+#defs //
+
+#frameFA
+
+lblVrd = tk.Label(
+    master=frameFA,
+    height = 100,
+    width = 150,
+    text='Aprocont',
+    bg='green')
+lblVrd.pack()
+#frameFA//
+
+#frameFB
+#tab config
+
+tab = ttk.Notebook(janela)
+tab.place(
+    x=300,
+    y=0,
+    width=500,
+    height=500)
+
+rcb=Frame(tab)
+cds=Frame(tab)
+vsl=Frame(tab)
+edit=Frame(tab)
+
+tab.add(rcb,text='Recibo')
+tab.add(cds,text='Cadastro')
+tab.add(vsl,text='Visualizar')
+tab.add(edit,text='Editar')
+#tab config //
+
+#rcb
+
+lblNmCl = tk.Label(
+    rcb,
+    text='Nome do cliente')
+lblNmCl.pack()
+
+entryNmCl = tk.Entry(
+    rcb,
+    width=50)
+entryNmCl.pack()
+
+
+lblVlr = tk.Label(
+    rcb,
+    text='Valor')
+lblVlr.pack()
+
+entryVlr = tk.Entry(
+    rcb,
+    width=50)
+entryVlr.pack()
+
+lblData = tk.Label(
+    rcb,
+    text='Data')
+lblData.pack()
+
+entryData = tk.Entry(
+    rcb,
+    width=50)
+entryData.pack()
+
+lblRcb = tk.Label(
+    rcb,
+    text='Quem vai receber')
+lblRcb.pack()
+
+entryRcb = tk.Entry(
+    rcb,
+    width=50)
+entryRcb.pack()
+
+lblSpc = tk.Label(
+    rcb,
+    height=2)
+lblSpc.pack()
+
+ok = tk.Button(
+    rcb,
+    command=get,
+    text="Gerar recibo",
+    width=20,
+    height=2)
+ok.pack()
+
+lblFant = tk.Label(
+    rcb,
+    height=1)
+lblFant.pack()
+
+limp = tk.Button(
+    rcb,
+    command=limpar,
+    text = 'Limpar',
+    width=20,
+    height=2)
+limp.pack()
+#rcb //
+
+#cds
+
+lblCdsCl = tk.Label(
+    cds,
+    text='Nome')
+lblCdsCl.pack()
+
+entryCdsCl = tk.Entry(
+    cds,
+    width=50)
+entryCdsCl.pack()
+
+lblCdsCNCP = tk.Label(
+    cds,
+    text='CPF ou CNPJ')
+lblCdsCNCP.pack()
+
+entryCdsCNCP = tk.Entry(
+    cds,
+    width=50)
+entryCdsCNCP.pack()
+
+lblCdsNr = tk.Label(
+    cds,
+    text='Número Domínio')
+lblCdsNr.pack()
+
+entryCdsNr = tk.Entry(
+    cds,
+    width=50)
+entryCdsNr.pack()
+
+lblFants = tk.Label(
+    cds,
+    height=2)
+lblFants.pack()
+
+btnLimp = tk.Button(
+    cds,
+    command=limpar2,
+    text = 'Limpar',
+    width=20,
+    height=2)
+btnLimp.pack()
+
+lblSpcs = tk.Label(
+    cds,
+    height=1)
+lblSpcs.pack()
+
+btnCds = tk.Button(
+    cds,
+    #command=cadastrar,
+    text = 'Cadastrar',
+    width=20,
+    height=2)
+btnCds.pack()
+#cds //
+
+#vsl
+
+
+
+#edit
+
+
+
+#pack
+
+frameFA.pack()
+
+janela.mainloop() 
